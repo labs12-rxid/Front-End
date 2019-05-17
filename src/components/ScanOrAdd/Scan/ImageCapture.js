@@ -2,7 +2,7 @@ import React from 'react';
 import Camera, { IMAGE_TYPES, FACING_MODES } from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 
-export default function ImageCapture({ setPhoto, state, dispatch }) {
+export default function ImageCapture({ setPhoto }) {
   const onTakePhoto = dataURI => {
     let data = dataURI.split(',');
     let byteString; // initializes without declaring!

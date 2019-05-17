@@ -8,21 +8,26 @@ module.exports = function parseMedStrengths(meds) {
       .split(';')
       .map(ingredient => ingredient.split(regex).filter(Boolean));
 
-  const typeCheck = (maybeJSON) => {
-    if (maybeJSON instanceof Array) {
-      return maybeJSON
-    } else if (typeof maybeJSON === 'string') {
-      if (maybeJSON.charAt(0) === '[') {
-        return maybeJSON.split(',').flatMap(array => array)
-      } else if (maybeJSON.charAt(0) === '{') {
-        return JSON.parse(`[${maybeJSON.slice()}]`)
-      }
-    }
-  }
+  // const typeCheck = (maybeJSON) => {
+  //   if (maybeJSON instanceof Array) {
+  //     console.log("array")
+  //     return maybeJSON
+  //   } else if (typeof maybeJSON === 'string') {
+  //     console.log("string")
+  //     if (typeof JSON.parse(maybeJSON) === 'object') {
+  //       return [JSON.parse(maybeJSON)]
+  //     } else if (maybeJSON.charAt(0) === '[') {
+  //       console.log("string")
+  //       return maybeJSON.split('},{').flatMap(array => array)
+  //     } else if (maybeJSON.charAt(0) === '{') {
+  //       return maybeJSON.split(',')
+  //     }
+  //   }
+  // }
 
   try {
-    const extractedMeds = typeCheck(meds);
-    return extractedMeds.map(med => {
+    // const extractedMeds = typeCheck(meds);
+    return meds.map(med => {
       med["strength"] = med["spl_strength"]
         ? regexStrength(med["spl_strength"], scaryRegex)
         : [['unknown', null, null]]

@@ -10,7 +10,7 @@ import parseMedStrengths from 'utilities/parseMedStrengths';
 
 // import AddPillButton from '../Scan/SearchResults/AddPillButton';
 
-const SearchPill = ({dispatch, ...rest}) => {
+const SearchPill = ({data, setData, ...rest}) => {
   const [name, setName] = useState('');
   const [imprint, setImprint] = useState('');
   const [color, setColor] = useState('');
@@ -31,7 +31,7 @@ const SearchPill = ({dispatch, ...rest}) => {
     try {
       const results = await axios.post(textEndpoint, query);
       const parsedResults = parseMedStrengths(results.data);
-      dispatch({ 'type': 'analysisResults', payload: parsedResults })
+      setData(parsedResults);
     } catch(error) {
       console.error(error);
     };
