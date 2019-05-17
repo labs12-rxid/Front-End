@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ImageCapture from './ImageCapture.js';
 import { useToggle } from 'utilities/useToggle';
 import axios from 'axios';
+import CloudIcon from '@material-ui/icons/CloudUpload';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import parseMedStrengths from 'utilities/parseMedStrengths';
@@ -43,12 +44,13 @@ function ScanImage({ data, setData, ...props }) {
   const { classes } = props;
 
   return (
-    <>
-      <div>
-        <h4>Option 1 - Identify by uploading an image</h4>
-        <div>
-          <p>Image Upload</p>
-          <div>
+    <section className='option1-container'>
+      <div className='image-container'>
+        <h4>Option 1 - Identify by uploading pill image</h4>
+        <div className='image-upload'>
+          <h5>Pill Image Upload</h5>
+          <div className='upload-button-container'>
+            <CloudIcon />
             <label htmlFor='image-upload-button'>
               <input
                 accept='image/*'
@@ -59,18 +61,27 @@ function ScanImage({ data, setData, ...props }) {
               />
               <Button
                 variant='contained'
-                component='span'
-                className={classes.button}
+                className='upload-button'
                 onKeyDown={magicClicker}
               >
-                Upload
+                Upload front image of pill
               </Button>
             </label>
+<<<<<<< HEAD
               <Button onClick={toggleCamera}>Take Photo</Button>
+=======
+            <p>or drag and drop them here</p>
+>>>>>>> 726b991859e5410b1fba9962e9087d1fac4c8004
           </div>
+          {state && state.hasVideo && (
+            <Button style={{ display: 'none' }} onClick={toggleCamera}>
+              Take Photo
+            </Button>
+          )}
+          <Button onClick={upload} className='identify-button'>
+            Identify Pill
+          </Button>
         </div>
-
-        <Button variant='contained' onClick={upload}>Identify</Button>
       </div>
       <div>
         {photo && (
@@ -84,14 +95,29 @@ function ScanImage({ data, setData, ...props }) {
       {camera ? (
         <ImageCapture setPhoto={setPhoto} />
       ) : null}
-    </>
+      <section className='directions'>
+        <h2>Steps To Identify Pill</h2>
+        <h3>OPTION - 1</h3>
+        <article>
+          <ol>
+            <li>
+              Upload front image of your pill displaying numbers and/or letters.
+            </li>
+            <li>
+              Upload back image of your pill <span>(optional).</span>
+            </li>
+            <li>
+              Click <strong>"Identify Pill"</strong> to get details about your
+              pill.
+            </li>
+          </ol>
+        </article>
+      </section>
+    </section>
   );
 }
 
 const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit
-  },
   input: {
     display: 'none'
   }
