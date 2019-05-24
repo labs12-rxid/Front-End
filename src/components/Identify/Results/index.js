@@ -11,17 +11,24 @@ import { desktop, tablet } from 'scss/mediaVariables';
 const SearchResults = ({
   searchResults,
   addPill,
-  setImage,
   history,
   classes,
   setData
 }) => {
   const [pill, setPill] = useState(null);
+  const [imageLink, setImageLink] = useState(null);
 
   // Okay, these media queries are not working. 'Display: none' is just to prove this point.
 
   if (pill) {
-    return <ViewDetails pill={pill} addPill={addPill} setPill={setPill} />;
+    return (
+      <ViewDetails
+        pill={pill}
+        addPill={addPill}
+        setPill={setPill}
+        imageLink={imageLink}
+      />
+    );
   } else {
     return (
       <>
@@ -53,7 +60,7 @@ const SearchResults = ({
                     addPill={addPill}
                     setPill={setPill}
                     history={history}
-                    setImage={setImage}
+                    setImageLink={setImageLink}
                   />
                 ))}
           </div>

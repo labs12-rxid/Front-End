@@ -92,7 +92,7 @@ const styles = theme => ({
   }
 });
 
-const ViewDetails = ({ classes, pill, addPill, setPill }) => {
+const ViewDetails = ({ classes, pill, addPill, setPill, imageLink }) => {
   const correctCasing = string => {
     const lowerCasedString = string.toLowerCase();
     return lowerCasedString[0].toUpperCase() + lowerCasedString.slice(1);
@@ -128,7 +128,8 @@ const ViewDetails = ({ classes, pill, addPill, setPill }) => {
       <div className={classes.left}>
         <img
           className={classes.genericImage}
-          src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEtm2tJxpsgbyWcy36iZ6tPxSyg-wLQNBLOzRqbiNCaq1iAy5O`}
+          // src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEtm2tJxpsgbyWcy36iZ6tPxSyg-wLQNBLOzRqbiNCaq1iAy5O`}
+          src={imageLink}
           alt='A drug'
         />
       </div>
