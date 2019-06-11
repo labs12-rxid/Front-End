@@ -42,8 +42,28 @@ const Landing = ({ history, logIn }) => {
             Welcome to <br />
             RxID Pill Identifier
           </h1>
+          <div className='mobile-buttons'>
+            <button
+              className='login'
+              onClick={event => {
+                event.preventDefault();
+                Auth.lock.show();
+              }}
+            >
+              Login
+            </button>
+            <button
+              onClick={event => {
+                event.preventDefault();
+                Auth.lock.show();
+              }}
+              className='join'
+            >
+              Join us
+            </button>
+          </div>
           <hr />
-          <p>
+          <p className='product-description'>
             Identify your medications on their appearance and log each
             medication and your experience with them. Schedule your medications
             and get notifications minutes before due time with image and dosage
@@ -162,22 +182,43 @@ const Landing = ({ history, logIn }) => {
         <div className='tiles'>
           {team.map(teamMate => (
             <div className='tile' key={team.indexOf(teamMate)}>
-              <img className='profile-image' src={teamMate.image} alt={teamMate.name} />
+              <img
+                className='profile-image'
+                src={teamMate.image}
+                alt={teamMate.name}
+              />
               <div>
                 <h3>{teamMate.name}</h3>
                 <p>{teamMate.role}</p>
               </div>
               <div className='links'>
-                { teamMate.medium && (
+                {teamMate.medium && (
                   <a href={teamMate.medium} target='blank'>
-                    <img className='brand-icon' src={iconMedium} alt="Medium Link" />
-                  </a>)}
-                { teamMate.linkedIn && (<a href={teamMate.linkedIn} target='blank'>
-                  <img className='brand-icon' src={iconLinkedIn} alt="LinkedIn Link" />
-                </a> )}
-                { teamMate.gitHub && (<a href={teamMate.gitHub} target='blank'>
-                  <img className='brand-icon' src={iconGitHub} alt="GitHub Link" />
-                </a> )}
+                    <img
+                      className='brand-icon'
+                      src={iconMedium}
+                      alt='Medium Link'
+                    />
+                  </a>
+                )}
+                {teamMate.linkedIn && (
+                  <a href={teamMate.linkedIn} target='blank'>
+                    <img
+                      className='brand-icon'
+                      src={iconLinkedIn}
+                      alt='LinkedIn Link'
+                    />
+                  </a>
+                )}
+                {teamMate.gitHub && (
+                  <a href={teamMate.gitHub} target='blank'>
+                    <img
+                      className='brand-icon'
+                      src={iconGitHub}
+                      alt='GitHub Link'
+                    />
+                  </a>
+                )}
               </div>
             </div>
           ))}
@@ -191,10 +232,14 @@ const Landing = ({ history, logIn }) => {
         </a>
         <div>
           <a href='https://twitter.com/lambdaschool' target='blank'>
-            <img className='brand-icon' src={iconTwitter} alt="Twitter Link" />
+            <img className='brand-icon' src={iconTwitter} alt='Twitter Link' />
           </a>
           <a href='https://www.facebook.com/LambdaSchoolOnline/' target='blank'>
-            <img className='brand-icon' src={iconFacebook} alt="Facebook Link" />
+            <img
+              className='brand-icon'
+              src={iconFacebook}
+              alt='Facebook Link'
+            />
           </a>
         </div>
       </footer>

@@ -166,8 +166,12 @@ const SearchPill = ({ setData, ...props }) => {
               Select the pill color <span>(optional).</span>
             </li>
             <li>Select the shape.</li>
-            <li>Click "Identify Pill" button.</li>
-            <li>Click "Reset" to re-enter search fields.</li>
+            <li>
+              Click <strong>"Identify Pill"</strong> button.
+            </li>
+            <li>
+              Click <strong>"Reset"</strong> to re-enter search fields.
+            </li>
           </ol>
         </article>
       </div>

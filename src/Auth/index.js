@@ -20,8 +20,11 @@ const Auth = (function() {
           logo,
           primaryColor: '#2C90F5',
           secondaryColor: '#5BAC48'
+        },
+        languageDictionary: {
+          emailInputPlaceholder: 'something@youremail.com',
+          title: 'RxID'
         }
-        // rememberLastLogin: false
       }
     );
     wm.set(privateStore, {

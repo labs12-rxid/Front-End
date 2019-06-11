@@ -2,7 +2,7 @@ import React from 'react';
 import CloudIcon from '@material-ui/icons/CloudUpload';
 import Button from '@material-ui/core/Button';
 
-const ImageUpload = ({ photoSelect, buttonText, subText }) => {
+const ImageInput = ({ photoSelect, buttonText, subText, ...props }) => {
   // Extremely breakable component, please be careful.
 
   const magicClicker = event => {
@@ -39,4 +39,4 @@ const ImageUpload = ({ photoSelect, buttonText, subText }) => {
   );
 };
 
-export default ImageUpload;
+export default ImageInput;

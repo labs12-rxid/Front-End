@@ -13,7 +13,8 @@ const SearchResults = ({
   addPill,
   history,
   classes,
-  setData
+  setData,
+  setImage
 }) => {
   const [pill, setPill] = useState(null);
   const [imageLink, setImageLink] = useState(null);
@@ -60,6 +61,7 @@ const SearchResults = ({
                     addPill={addPill}
                     setPill={setPill}
                     history={history}
+                    setImage={setImage}
                     setImageLink={setImageLink}
                   />
                 ))}

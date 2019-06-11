@@ -66,7 +66,7 @@ const styles = theme => ({
   title: {
     margin: '3px 10px 0 0',
     fontSize: '1.2rem',
-    fontWeight: 'light',
+    fontWeight: 'light'
   },
   subTitle: {
     fontWeight: 300,
@@ -76,7 +76,7 @@ const styles = theme => ({
   },
   strong: {
     fontSize: '2.5rem',
-    fontWeight: 400
+    fontWeight: 700
   },
   titleDiv: {
     marginLeft: '20px',

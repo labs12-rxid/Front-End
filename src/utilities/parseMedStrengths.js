@@ -11,8 +11,12 @@ module.exports = function parseMedStrengths(meds) {
     if (maybeJSON instanceof Array) {
       if (maybeJSON.length === 1) {
         return [JSON.parse(maybeJSON[0])];
-      } else if (maybeJSON.every(med => typeof med !== 'object' ? true : false )) {
-        return maybeJSON.map(JSONchunk => JSON.parse(`[${JSONchunk.slice()}]`)).flatMap(array => array);
+      } else if (
+        maybeJSON.every(med => (typeof med !== 'object' ? true : false))
+      ) {
+        return maybeJSON
+          .map(JSONchunk => JSON.parse(`[${JSONchunk.slice()}]`))
+          .flatMap(array => array);
       } else {
         return maybeJSON;
       }

@@ -185,7 +185,9 @@ const SheduledPillsCards = ({ filteredRems, fetchingRems, error }) => {
         alignItems: 'center'
       }}
     >
-      <h2 style={{ fontSize: '25px', margin: '100px 0 0 0', fontWeight: '500' }}>
+      <h2
+        style={{ fontSize: '25px', margin: '100px 0 0 0', fontWeight: '500' }}
+      >
         Sheduled Meds for today
       </h2>
       {filteredRems.length ? (

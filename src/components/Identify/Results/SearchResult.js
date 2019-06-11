@@ -65,7 +65,7 @@ const styles = {
   },
   rem: {
     backgroundColor: '#2D90F5',
-    width: '160px',
+    width: '164px',
     [tablet]: {
       width: '40%'
     },
@@ -79,7 +79,14 @@ const styles = {
   }
 };
 
-const SearchResult = ({ classes, result, addPill, setPill, setImageLink }) => {
+const SearchResult = ({
+  classes,
+  result,
+  addPill,
+  setPill,
+  setImage,
+  setImageLink
+}) => {
   console.log('SEARCH RESULT: ', result);
   const correctCasing = string => {
     const lowerCasedString = string.toLowerCase();
@@ -154,7 +161,7 @@ const SearchResult = ({ classes, result, addPill, setPill, setImageLink }) => {
         <Button
           onClick={e => {
             e.preventDefault();
-            // setImage(imageSrc);
+            setImage(imageSrc);
             addPill(formattedPill, 'adddosage');
           }}
           className={`${classes.button} ${classes.rem}`}

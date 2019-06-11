@@ -6,9 +6,11 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import ImageUpload from 'components/ImageUpload';
 import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary.js';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
-import { editUser } from 'actions';
+import { editUser, deleteUser, fetchUser } from 'actions';
 import { useInput } from 'utilities/useInput';
+import { useToggle } from 'utilities/useToggle';
 
 const DeleteButton = withStyles({
   root: {
@@ -49,8 +51,26 @@ const DisabledTextField = withStyles({
 
 DisabledTextField.muiName = 'TextField';
 
-const UserProfile = ({ editUser, user }) => {
+const NewAvatarButton = withStyles({
+  root: {
+    textTransform: 'capitalize',
+    background: '#40AB48',
+    color: 'white'
+  }
+})(props => <MuiButton {...props} />);
+
+const CancelUploadButton = withStyles({
+  root: {
+    textTransform: 'capitalize',
+    background: '#D00A1B',
+    color: 'white'
+  }
+})(props => <MuiButton {...props} />);
+
+const UserProfile = ({ editUser, deleteUser, user, history }) => {
   const username = user.username ? user.username : null;
+  const [uploading, setUploading] = useToggle();
+
   const [photo, setPhoto] = useState();
   const firstName = useInput();
   const lastName = useInput();
@@ -78,6 +98,12 @@ const UserProfile = ({ editUser, user }) => {
     });
   };
 
+  const requestDeleteUser = e => {
+    e.preventDefault();
+    deleteUser(user.id);
+    history.push('/');
+  };
+
   const upload = async () => {
     if (!photo) {
       console.log('Need a photo!');
@@ -92,13 +118,18 @@ const UserProfile = ({ editUser, user }) => {
     try {
       const results = await axios.post(photoEndpoint, postData);
       if (results.data.message.search(/success/i) > -1) {
-        console.log(results, "Success!");
+        fetchUser(user.id);
       } else {
-        console.error(results, "Failure?");
+        console.error(results, 'Failure?');
       }
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const clearUpload = () => {
+    setUploading();
+    setPhoto();
   };
 
   return (
@@ -107,10 +138,62 @@ const UserProfile = ({ editUser, user }) => {
       <div className='user-profile-content'>
         <div className='user-image-upload'>
           <p className='user-image-upload-label'>User Image Upload</p>
-          <div className='user-image-upload-component'>
+          <div
+            className='user-image-upload-component'
+            style={{ display: 'flex', flexFlow: 'column nowrap' }}
+          >
             <ErrorBoundary>
-              <ImageUpload photo={photo} setPhoto={setPhoto} />
-              <MuiButton onClick={upload}>Upload Image!</MuiButton>
+              <div style={{ height: '350px', width: '350px' }}>
+                {!uploading ? (
+                  <img
+                    style={{
+                      objectFit: 'cover',
+                      height: '100%',
+                      width: '100%'
+                    }}
+                    src={
+                      user.profile_image_url
+                        ? `/users/images/${user.profile_image_url}`
+                        : `/images/avatar-3.png`
+                    }
+                    alt='you'
+                  />
+                ) : (
+                  <ImageUpload
+                    maskImage={
+                      user.profile_image_url
+                        ? `/users/images/${user.profile_image_url}`
+                        : `/images/avatar-3.png`
+                    }
+                    photo={photo}
+                    setPhoto={setPhoto}
+                  />
+                )}
+              </div>
+              <div>
+                {' '}
+                {!uploading ? (
+                  <NewAvatarButton onClick={setUploading}>
+                    Upload New Image?
+                  </NewAvatarButton>
+                ) : (
+                  <React.Fragment>
+                    <CancelUploadButton
+                      onClick={clearUpload}
+                      style={{ margin: '0 5px' }}
+                    >
+                      Cancel?
+                    </CancelUploadButton>
+                    <NewAvatarButton
+                      onClick={upload}
+                      style={{ margin: '0 5px' }}
+                    >
+                      {' '}
+                      Upload Image!{' '}
+                    </NewAvatarButton>
+                  </React.Fragment>
+                )}
+              </div>
             </ErrorBoundary>
           </div>
         </div>
@@ -150,7 +233,11 @@ const UserProfile = ({ editUser, user }) => {
         </div>
       </div>
       <div className='user-profile-buttons'>
-        <DeleteButton tabIndex='-1' variant='contained'>
+        <DeleteButton
+          tabIndex='-1'
+          variant='contained'
+          onClick={requestDeleteUser}
+        >
           Delete Account
         </DeleteButton>
         <SaveButton variant='contained' onClick={requestEditUser}>
@@ -167,5 +254,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { editUser }
-)(UserProfile);
+  { editUser, deleteUser, fetchUser }
+)(withRouter(UserProfile));
