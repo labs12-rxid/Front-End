@@ -55,11 +55,10 @@ const Landing = ({ history, logIn }) => {
             <button
               onClick={event => {
                 event.preventDefault();
-                Auth.lock.show();
-              }}
+                history.push("/identify")}}
               className='join'
             >
-              Join us
+              Identify
             </button>
           </div>
           <hr />
@@ -83,11 +82,10 @@ const Landing = ({ history, logIn }) => {
           <button
             onClick={event => {
               event.preventDefault();
-              Auth.lock.show();
-            }}
+              history.push("/identify")}}
             className='join'
           >
-            Join us
+            Identify
           </button>
         </div>
       </header>
