@@ -41,13 +41,12 @@ $mobile: 500px;
       }
       .mobile-buttons {
         display: none;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        margin: 1.5rem 1rem 0.5rem 0.5rem;
-        line-height: 100%;
         @media screen and (max-width: $mobile) {
-          display: unset;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin: 1.5rem 1rem 0.5rem 0.5rem;
+          line-height: 100%;
         }
         .login {
           color: #e8ebef;
