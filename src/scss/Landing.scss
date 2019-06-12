@@ -1,4 +1,11 @@
+$mobile: 500px;
+
 .landing {
+  @media screen and (max-width: $mobile) {
+    width: 100vw;
+    min-width: 100vw;
+    max-width: 100vw;
+  }
   .header {
     display: flex;
     height: 579px;
@@ -23,11 +30,45 @@
         border: 2px solid #40ab48;
       }
 
-      p {
+      .product-description {
         color: #73869b;
         line-height: 1.5;
         font-weight: 300;
         font-size: 1.2rem;
+        @media screen and (max-width: $mobile) {
+          display: none;
+        }
+      }
+      .mobile-buttons {
+        display: none;
+        @media screen and (max-width: $mobile) {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin: 1.5rem 1rem 0.5rem 0.5rem;
+          line-height: 100%;
+        }
+        .login {
+          color: #e8ebef;
+          width: 180px;
+          height: 60px;
+          font-size: 20px;
+          background: none;
+          border: 1px solid #979797;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        .join {
+          font-size: 20px;
+          color: #e8ebef;
+          width: 180px;
+          height: 60px;
+          background: #2d90f5;
+          border: 1px solid #2d90f5;
+          border-radius: 5px;
+          cursor: pointer;
+        }
       }
     }
     .buttons {
@@ -37,6 +78,9 @@
       align-items: center;
       margin: 150px 100px 50px 50px;
       line-height: 100%;
+      @media screen and (max-width: $mobile) {
+        display: none;
+      }
 
       .login {
         color: #e8ebef;
@@ -70,6 +114,9 @@
       flex-direction: column;
       width: 50%;
       padding: 300px 0 100px 100px;
+      @media screen and (max-width: $mobile) {
+        display: none;
+      }
 
       h1 {
         font-size: 64px;
@@ -89,6 +136,9 @@
       display: flex;
       width: 50%;
       padding: 100px 50px 100px 0px;
+      @media screen and (max-width: $mobile) {
+        flex-direction: column;
+      }
       :first-child {
         margin-top: 50px;
       }
@@ -157,6 +207,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    @media screen and (max-width: $mobile) {
+      // display: none;
+    }
 
     .text-content {
       display: flex;
@@ -182,6 +235,9 @@
       margin: 0 auto;
       padding-top: 50px;
       width: 90%;
+      @media screen and (max-width: $mobile) {
+        flex-direction: column;
+      }
 
       .tile {
         display: flex;

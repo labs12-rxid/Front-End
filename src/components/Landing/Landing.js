@@ -42,8 +42,28 @@ const Landing = ({ history, logIn }) => {
             Welcome to <br />
             RxID Pill Identifier
           </h1>
+          <div className='mobile-buttons'>
+            <button
+              className='login'
+              onClick={event => {
+                event.preventDefault();
+                Auth.lock.show();
+              }}
+            >
+              Login
+            </button>
+            <button
+              onClick={event => {
+                event.preventDefault();
+                Auth.lock.show();
+              }}
+              className='join'
+            >
+              Join us
+            </button>
+          </div>
           <hr />
-          <p>
+          <p className='product-description'>
             Identify your medications on their appearance and log each
             medication and your experience with them. Schedule your medications
             and get notifications minutes before due time with image and dosage
