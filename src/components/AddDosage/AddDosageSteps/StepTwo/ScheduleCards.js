@@ -24,7 +24,7 @@ const ScheduleCard = ({ rems, title, icon }) => {
 
   return rems.length ? (
     <div className='schedule-card '>
-      <i className={icon + ' ' + 'schedule-card-icon'} />
+      <i className={icon + 'schedule-card-icon'} />
       <div className='schedule-card-data'>
         <h3 className='schedule-card-title'>{title}</h3>
         <ul className='schedule-card-med-list'>
