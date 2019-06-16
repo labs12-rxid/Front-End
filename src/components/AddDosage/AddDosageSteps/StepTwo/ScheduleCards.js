@@ -23,63 +23,13 @@ const ScheduleCard = ({ rems, title, icon }) => {
         }, times[times.length - 1]);
 
   return rems.length ? (
-    <div
-      style={{
-        display: 'flex',
-        // justifyContent: 'space-between',
-        width: '400px',
-        height: '75px',
-        margin: '15px',
-        borderRadius: '5px',
-        boxShadow: '0px 0px 10px 5px #f3f3f3'
-      }}
-    >
-      <i
-        className={icon}
-        style={{
-          lineHeight: '75px',
-          fontSize: '25px',
-          color: '#2D90F5',
-          padding: '0 20px'
-        }}
-      />
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-          marginTop: '15px'
-          // justifyContent: 'center'
-        }}
-      >
-        <h3
-          style={{
-            alignSelf: 'flex-start',
-            fontWeight: '500',
-            margin: '0 0 7.5px 0'
-          }}
-        >
-          {title}
-        </h3>
-        <ul
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            width: '220px',
-            overflow: 'hidden',
-            height: '25px',
-            lineHeight: '12.5px'
-          }}
-        >
+    <div className='schedule-card '>
+      <i className={icon + ' ' + 'schedule-card-icon'} />
+      <div className='schedule-card-data'>
+        <h3 className='schedule-card-title'>{title}</h3>
+        <ul className='schedule-card-med-list'>
           {rems.map(rem => (
-            <li
-              key={rems.indexOf(rem)}
-              style={{
-                overflow: 'hidden',
-                fontSize: '10px',
-                color: '#828384'
-              }}
-            >
+            <li key={rems.indexOf(rem)} className='schedule-card-med-list-item'>
               {rems.indexOf(rem) === rems.length - 1
                 ? rem.name
                 : rem.name + ', '}
@@ -87,33 +37,18 @@ const ScheduleCard = ({ rems, title, icon }) => {
           ))}
         </ul>
       </div>
-      <div
-        style={{
-          color: '#2D90F5',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          width: '100px'
-        }}
-      >
-        <p style={{ alignSelf: 'flex-end', margin: '0 0 5px 0' }}>
+      <div className='schedule-card-schedule'>
+        <p className='schedule-card-schedule-pills'>
           {pills + (pills === 1 ? ' pill' : ' pills')}
         </p>
         <p
-          style={{
-            fontSize: '10px',
-            width: 'max-content',
-            color: '#FFFFFF',
-            alignSelf: 'flex-end',
-            padding: '5px',
-            borderRadius: '5px',
-            background:
-              remClosestToNow - Date.now() < 0
-                ? '#40AB48'
-                : remClosestToNow - Date.now() < 1800000
-                ? '#ED3F65'
-                : '#F5A623'
-          }}
+          className={
+            remClosestToNow - Date.now() < 0
+              ? 'schedule-card-schedule-passed'
+              : remClosestToNow - Date.now() < 1800000
+              ? 'schedule-card-schedule-soon'
+              : 'schedule-card-schedule-coming-up'
+          }
         >{`${remClosestToNow - Date.now() < 0 ? 'was due ' : 'due in '}${moment(
           remClosestToNow
         ).fromNow()}`}</p>
@@ -122,7 +57,7 @@ const ScheduleCard = ({ rems, title, icon }) => {
   ) : null;
 };
 
-const SheduledPillsCards = ({ filteredRems, fetchingRems, error }) => {
+const ScheduledPillsCards = ({ filteredRems, fetchingRems, error }) => {
   const [morningRems, setMorningRems] = useState([]);
   const [afternoonRems, setAfternoonRems] = useState([]);
   const [eveningRems, setEveningRems] = useState([]);
@@ -169,7 +104,6 @@ const SheduledPillsCards = ({ filteredRems, fetchingRems, error }) => {
             capsules: rem.med_dose / rem.med_strength
           });
     });
-    // console.log('BIGSTRING', morningRems);
     setMorningRems([...morning]);
     setAfternoonRems([...afternoon]);
     setEveningRems([...evening]);
@@ -177,19 +111,8 @@ const SheduledPillsCards = ({ filteredRems, fetchingRems, error }) => {
   }, [filteredRems]);
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}
-    >
-      <h2
-        style={{ fontSize: '25px', margin: '100px 0 0 0', fontWeight: '500' }}
-      >
-        Sheduled Meds for today
-      </h2>
+    <div className='schedule-cards'>
+      <h2 className='schedule-cards-title'>Scheduled Meds for today</h2>
       {filteredRems.length ? (
         <div>
           <ScheduleCard
@@ -230,4 +153,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   null
-)(SheduledPillsCards);
+)(ScheduledPillsCards);

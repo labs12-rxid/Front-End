@@ -50,73 +50,59 @@ const DosageFrequency = ({
     console.log(selectedDates);
   };
   return (
-    <CardContent style={{ display: 'flex' }}>
-      <Typography style={{ width: '150px', alignSelf: 'center' }} component='p'>
+    <CardContent className='dosage-frequency'>
+      <Typography className='dosage-frequency-section-title' component='p'>
         Dosage Frequency
       </Typography>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <div className='dosage-frequency-interface'>
         <Button
-          style={{
-            background: dosageFrequency === 'daily' ? '#2D90F5' : '',
-            color: dosageFrequency === 'daily' ? 'white' : '',
-            boxShadow: '0px 0px 10px 5px #f3f3f3',
-            margin: '0 10px 10px 10px',
-            textTransform: 'none'
-          }}
+          className={
+            dosageFrequency === 'daily'
+              ? 'dosage-frequency-active'
+              : 'dosage-frequency-inactive'
+          }
           onClick={() => handleDosageFrequencyChange('daily')}
         >
           Daily
         </Button>
         <Button
-          style={{
-            background: dosageFrequency === 'weekly' ? '#2D90F5' : '',
-            color: dosageFrequency === 'weekly' ? 'white' : '',
-            boxShadow: '0px 0px 10px 5px #f3f3f3',
-            margin: '0 10px 10px 10px',
-            textTransform: 'none'
-          }}
+          className={
+            dosageFrequency === 'weekly'
+              ? 'dosage-frequency-active'
+              : 'dosage-frequency-inactive'
+          }
           onClick={() => handleDosageFrequencyChange('weekly')}
         >
           Weekly
         </Button>
         <Button
-          style={{
-            background: dosageFrequency === 'monthly' ? '#2D90F5' : '',
-            color: dosageFrequency === 'monthly' ? 'white' : '',
-            boxShadow: '0px 0px 10px 5px #f3f3f3',
-            margin: '0 10px 10px 10px',
-            textTransform: 'none'
-          }}
+          className={
+            dosageFrequency === 'monthly'
+              ? 'dosage-frequency-active'
+              : 'dosage-frequency-inactive'
+          }
           onClick={() => handleDosageFrequencyChange('monthly')}
         >
           Monthly
         </Button>
         <FormControl variant='outlined'>
           {dosageFrequency === 'weekly' ? (
-            <div style={{ display: 'flex' }}>
-              <Typography
-                style={{ alignSelf: 'center', margin: '0 0 0 10px' }}
-                component='p'
-              >
+            <div className='dosage-frequency-form'>
+              <Typography className='dosage-frequency-form-title' component='p'>
                 Select Weekdays
               </Typography>
               <Select
                 multiple
                 value={selectedDays}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  flexWrap: 'wrap',
-                  height: '36px',
-                  overflow: 'hidden',
-                  margin: '0 0 0 10px'
-                }}
-                input={<OutlinedInput style={{ padding: '0' }} />}
+                className='dosage-frequency-form-select'
+                input={
+                  <OutlinedInput className='dosage-frequency-form-select-input' />
+                }
                 renderValue={selected => (
-                  <div style={{ padding: '0' }}>
+                  <div className='dosage-frequency-form-select-display'>
                     {selected.map(value => (
                       <Chip
-                        style={{ height: '25px', margin: '-22.5px 0 0 0' }}
+                        className='dosage-frequency-form-select-chip'
                         key={value}
                         label={value}
                       />
@@ -142,31 +128,23 @@ const DosageFrequency = ({
               </Select>
             </div>
           ) : dosageFrequency === 'monthly' ? (
-            <div style={{ display: 'flex' }}>
-              <Typography
-                style={{ alignSelf: 'center', margin: '0 0 0 10px' }}
-                component='p'
-              >
+            <div className='dosage-frequency-form'>
+              <Typography className='dosage-frequency-form-title' component='p'>
                 Select Dates
               </Typography>
 
               <Select
                 multiple
                 value={selectedDates}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  flexWrap: 'wrap',
-                  height: '36px',
-                  overflow: 'hidden',
-                  margin: '0 0 0 10px'
-                }}
-                input={<OutlinedInput style={{ padding: '0' }} />}
+                className='dosage-frequency-form-select'
+                input={
+                  <OutlinedInput className='dosage-frequency-form-select-input' />
+                }
                 renderValue={selected => (
-                  <div style={{ padding: '0' }}>
+                  <div className='dosage-frequency-form-select-display'>
                     {selected.map(value => (
                       <Chip
-                        style={{ height: '25px', margin: '-22.5px 0 0 0' }}
+                        className='dosage-frequency-form-select-chip'
                         key={value}
                         label={value}
                       />

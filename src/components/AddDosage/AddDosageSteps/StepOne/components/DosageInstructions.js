@@ -19,67 +19,53 @@ const DosageInstructions = ({
   };
 
   return (
-    <CardContent style={{ display: 'flex' }}>
-      <Typography
-        style={{ width: '150px !imporant', alignSelf: 'center' }}
-        component='p'
-      >
+    <CardContent className='dosage-instructions'>
+      <Typography className='dosage-instructions-section-title' component='p'>
         How will you take this pill?
       </Typography>
-      <CardContent style={{ flexWrap: 'wrap', paddingBottom: '0' }}>
+      <CardContent className='dosage-instructions-interface'>
         <Button
-          style={{
-            background: dosageInstruction === 'Before Meal' ? '#2D90F5' : '',
-            color: dosageInstruction === 'Before Meal' ? 'white' : '',
-            boxShadow: '0px 0px 10px 5px #f3f3f3',
-            margin: '0 10px',
-            textTransform: 'none'
-          }}
+          className={
+            dosageInstruction === 'Before Meal'
+              ? 'dosage-instructions-active'
+              : 'dosage-instructions-inactive'
+          }
           onClick={() => handleDosageInstructionChange('Before Meal')}
         >
           Before Meal
         </Button>
         <Button
-          style={{
-            background: dosageInstruction === 'With Meal' ? '#2D90F5' : '',
-            color: dosageInstruction === 'With Meal' ? 'white' : '',
-            boxShadow: '0px 0px 10px 5px #f3f3f3',
-            margin: '0 10px',
-            textTransform: 'none'
-          }}
+          className={
+            dosageInstruction === 'With Meal'
+              ? 'dosage-instructions-active'
+              : 'dosage-instructions-inactive'
+          }
           onClick={() => handleDosageInstructionChange('With Meal')}
         >
           With Meal
         </Button>
         <Button
-          style={{
-            background: dosageInstruction === 'After Meal' ? '#2D90F5' : '',
-            color: dosageInstruction === 'After Meal' ? 'white' : '',
-            boxShadow: '0px 0px 10px 5px #f3f3f3',
-            margin: '0 10px',
-            textTransform: 'none'
-          }}
+          className={
+            dosageInstruction === 'After Meal'
+              ? 'dosage-instructions-active'
+              : 'dosage-instructions-inactive'
+          }
           onClick={() => handleDosageInstructionChange('After Meal')}
         >
           After Meal
         </Button>
         <Button
-          style={{
-            background: dosageInstruction === 'Without Meal' ? '#2D90F5' : '',
-            color: dosageInstruction === 'Without Meal' ? 'white' : '',
-            boxShadow: '0px 0px 10px 5px #f3f3f3',
-            margin: '0 10px',
-            textTransform: 'none'
-          }}
+          className={
+            dosageInstruction === 'Without Meal'
+              ? 'dosage-instructions-active'
+              : 'dosage-instructions-inactive'
+          }
           onClick={() => handleDosageInstructionChange('Without Meal')}
         >
           Without Meal
         </Button>
         <TextField
-          style={{
-            boxShadow: '0px 0px 10px 5px #f3f3f3',
-            margin: '20px 10px'
-          }}
+          className='dosage-instructions-text-field'
           label='custom instruction'
           value={customInstruction.value}
           onClick={() => handleDosageInstructionChange('')}

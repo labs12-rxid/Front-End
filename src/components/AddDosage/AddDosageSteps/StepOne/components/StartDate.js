@@ -30,46 +30,29 @@ const StartDate = ({ startDate, setStartDate }) => {
   };
 
   return (
-    <CardContent style={{ display: 'flex' }}>
-      <Typography style={{ width: '150px', alignSelf: 'center' }} component='p'>
+    <CardContent className='start-date'>
+      <Typography className='start-date-section-title' component='p'>
         Start Date
       </Typography>
       <Button
-        style={{
-          background: startDate === todaysDate ? '#2D90F5' : '',
-          color: startDate === todaysDate ? 'white' : '',
-          boxShadow: '0px 0px 10px 5px #f3f3f3',
-          margin: '0 10px',
-          textTransform: 'none'
-        }}
+        className={
+          startDate === todaysDate ? 'start-date-active' : 'start-date-inactive'
+        }
         onClick={() => setStartDate(todaysDate)}
       >
         Today
       </Button>
       <Button
-        style={{
-          background:
-            startDate ===
-            formatMomentDate(
-              moment(todaysDate)
-                .add(1, 'days')
-                .format('L')
-            )
-              ? '#2D90F5'
-              : '',
-          color:
-            startDate ===
-            formatMomentDate(
-              moment(todaysDate)
-                .add(1, 'days')
-                .format('L')
-            )
-              ? 'white'
-              : '',
-          boxShadow: '0px 0px 10px 5px #f3f3f3',
-          margin: '0 10px',
-          textTransform: 'none'
-        }}
+        className={
+          startDate ===
+          formatMomentDate(
+            moment(todaysDate)
+              .add(1, 'days')
+              .format('L')
+          )
+            ? 'start-date-active'
+            : 'start-date-inactive'
+        }
         onClick={() =>
           setStartDate(
             formatMomentDate(
@@ -83,9 +66,7 @@ const StartDate = ({ startDate, setStartDate }) => {
         Tomorrow
       </Button>
       <TextField
-        style={{
-          height: '36px'
-        }}
+        className='start-date-text-field'
         id='date'
         type='date'
         value={startDate}
