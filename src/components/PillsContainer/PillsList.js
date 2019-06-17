@@ -30,6 +30,11 @@ class PillsList extends Component {
         this.setState({ noMeds: true });
       }
     }
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      if (this.props.location.pathname === '/pills') {
+        this.props.history.push('/pills/active');
+      }
+    }
   }
 
   render() {
