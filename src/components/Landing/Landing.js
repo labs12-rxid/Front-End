@@ -55,7 +55,8 @@ const Landing = ({ history, logIn }) => {
             <button
               onClick={event => {
                 event.preventDefault();
-                history.push("/identify")}}
+                history.push('/identify');
+              }}
               className='join'
             >
               Identify
@@ -82,7 +83,8 @@ const Landing = ({ history, logIn }) => {
           <button
             onClick={event => {
               event.preventDefault();
-              history.push("/identify")}}
+              history.push('/identify');
+            }}
             className='join'
           >
             Identify
@@ -113,7 +115,7 @@ const Landing = ({ history, logIn }) => {
             </div>
           </div>
           <div className='tiles-column'>
-            <div className='tile'>
+            <div className='tile schedule-tile'>
               <ArrowIcon className='icon' />
               <p>Schedule Pills</p>
             </div>
