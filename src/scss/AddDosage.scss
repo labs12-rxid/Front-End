@@ -1,0 +1,481 @@
+.pill-card {
+  width: 500px;
+  height: 62.5px;
+  display: flex;
+  align-items: center;
+  margin: 20px auto;
+  background: #f0f3f5;
+  border-radius: 5px;
+  box-shadow: none;
+
+  .dot {
+    line-height: 62.5px;
+    padding: 0 20px;
+    font-size: 40px;
+    color: #2d90f5;
+  }
+
+  .pill-image {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 2px;
+  }
+
+  .text-content {
+    line-height: 20px;
+    font-size: 15px;
+    font-weight: 100;
+    color: #757575;
+
+    .pill-name {
+      font-size: 17.5px;
+      font-weight: 100;
+      color: #383838;
+    }
+  }
+}
+
+.add-dosage {
+  margin: 0 0 25px 50px;
+
+  .add-dosage-title {
+    font-size: 25px;
+    margin: 30px 0;
+    font-weight: 900;
+  }
+
+  .add-dosage-card {
+    width: 60%;
+
+    .capsules-per-dose {
+      display: flex;
+
+      .capsules-per-dose-section-title {
+        width: 150px;
+        align-self: center;
+      }
+
+      .capsules-per-dose-interface {
+        display: flex;
+        height: 40px;
+        padding-left: 20px;
+        box-shadow: 0px 0px 10px 5px #f3f3f3;
+        margin: 0 10px;
+        text-transform: none;
+
+        .capsules-per-dose-interface-title {
+          line-height: 40px;
+        }
+
+        .capsules-per-dose-btn {
+          color: #2d90f5;
+        }
+
+        .capsules-per-dose-display {
+          line-height: 40px;
+        }
+      }
+    }
+
+    .length-of-dosage {
+      display: flex;
+
+      .length-of-dosage-section-title {
+        width: 150px;
+        align-self: center;
+      }
+
+      .length-of-dosage-active {
+        background: #2d90f5;
+        color: white;
+        box-shadow: 0px 0px 10px 5px #f3f3f3;
+        margin: 0 10px;
+        text-transform: none;
+      }
+
+      .length-of-dosage-inactive {
+        box-shadow: 0px 0px 10px 5px #f3f3f3;
+        margin: 0 10px;
+        text-transform: none;
+      }
+    }
+
+    .dosage-frequency {
+      display: flex;
+
+      .dosage-frequency-section-title {
+        width: 150px;
+        align-self: center;
+      }
+
+      .dosage-frequency-interface {
+        display: flex;
+        flex-wrap: wrap;
+
+        .dosage-frequency-active {
+          background: #2d90f5 !important;
+          color: white;
+          box-shadow: 0px 0px 10px 5px #f3f3f3;
+          margin: 0 10px 10px 10px;
+          text-transform: none;
+        }
+
+        .dosage-frequency-inactive {
+          box-shadow: 0px 0px 10px 5px #f3f3f3;
+          margin: 0 10px 10px 10px;
+          text-transform: none;
+        }
+
+        .dosage-frequency-form {
+          display: flex;
+
+          .dosage-frequency-form-title {
+            align-self: center;
+            margin: 0 0 0 10px;
+          }
+
+          .dosage-frequency-form-select {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 36px;
+            overflow: hidden;
+            margin: 0 0 0 10px;
+
+            .dosage-frequency-form-select-input {
+              padding: 0;
+            }
+
+            .dosage-frequency-form-select-display {
+              padding: 0;
+            }
+
+            .dosage-frequency-form-select-chip {
+              height: 25px;
+              margin: -22.5px 0 0 0;
+            }
+          }
+        }
+      }
+    }
+
+    .dosage-instructions {
+      display: flex;
+
+      .dosage-instructions-section-title {
+        width: 169px;
+        display: inline-block;
+        align-self: center;
+      }
+
+      .dosage-instructions-interface {
+        flex-wrap: wrap;
+        padding-bottom: 0;
+
+        .dosage-instructions-active {
+          background: #2d90f5;
+          color: white;
+          box-shadow: 0px 0px 10px 5px #f3f3f3;
+          margin: 0 10px;
+          text-transform: none;
+        }
+        .dosage-instructions-inactive {
+          box-shadow: 0px 0px 10px 5px #f3f3f3;
+          margin: 0 10px;
+          text-transform: none;
+        }
+
+        .dosage-instructions-text-field {
+          box-shadow: 0px 0px 10px 5px #f3f3f3;
+          margin: 20px 10px;
+        }
+      }
+    }
+
+    .dosage-time {
+      display: flex;
+
+      .dosage-time-section-title {
+        width: 150px;
+        align-self: center;
+      }
+
+      .dosage-time-open-dialogue {
+        box-shadow: 0px 0px 10px 5px #f3f3f3;
+        margin: 0 10px;
+        text-transform: none;
+      }
+
+      .dosage-time-dialogue-content {
+        display: flex;
+        justify-content: center;
+        line-height: 40px;
+
+        .dosage-time-dialogue-content-text-field {
+          padding-left: 20px;
+        }
+      }
+    }
+
+    .start-date {
+      display: flex;
+
+      .start-date-section-title {
+        width: 150px;
+        align-self: center;
+      }
+
+      .start-date-active {
+        background: #2d90f5;
+        color: white;
+        box-shadow: 0px 0px 10px 5px #f3f3f3;
+        margin: 0 10px;
+        text-transform: none;
+      }
+
+      .start-date-inactive {
+        box-shadow: 0px 0px 10px 5px #f3f3f3;
+        margin: 0 10px;
+        text-transform: none;
+      }
+
+      .start-date-text-field {
+        height: 36px;
+      }
+    }
+
+    .dosage-duration {
+      display: flex;
+
+      .dosage-duration-section-title {
+        width: 150px;
+        align-self: center;
+      }
+
+      .dosage-duration-interface {
+        display: flex;
+        height: 40px;
+        padding-left: 20px;
+        box-shadow: 0px 0px 10px 5px #f3f3f3;
+        margin: 0 10px;
+        text-transform: none;
+
+        .dosage-duration-interface-title {
+          line-height: 40px;
+        }
+
+        .dosage-duration-btn {
+          color: #2d90f5;
+        }
+
+        .dosage-duration-display {
+          line-height: 40px;
+        }
+      }
+    }
+  }
+
+  .add-dosage-card-actions {
+    width: 40%;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    .add-dosage-cancel-btn {
+      background: black;
+      color: white;
+      box-shadow: 0px 0px 10px 5px #f3f3f3;
+      margin: 0 10px 10px 10px;
+      text-transform: none;
+    }
+
+    .add-dosage-confirm-btn {
+      background: #40ab48;
+      color: white;
+      box-shadow: 0px 0px 10px 5px #f3f3f3;
+      margin: 0 10px 10px 10px;
+      text-transform: none;
+    }
+  }
+}
+
+.confirm-dosage {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 0 0 75px 0;
+
+  .confirm-dosage-section {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    align-items: center;
+
+    .confirm-dosage-section-title {
+      align-self: flex-start;
+      padding: 0 0 0 10%;
+      font-size: 25px;
+      margin: 30px 0;
+      font-weight: 900;
+    }
+
+    .confirm-dosage-section-container {
+      width: 80%;
+
+      .confirm-dosage-section-container-card {
+        width: 65%;
+        margin: 0 auto;
+        box-shadow: none;
+
+        .confirm-dosage-section-container-card-title {
+          height: 50px;
+          line-height: 50px;
+          width: 100%;
+          background: #2d90f5;
+          color: white;
+          border-radius: 4px;
+          text-align: center;
+          font-size: 20px;
+        }
+
+        .confirm-dosage-data-display {
+          display: flex;
+          justify-content: space-between;
+
+          .confirm-dosage-data-display-data {
+            color: #2d90f5;
+          }
+        }
+
+        .confirm-dosage-hr {
+          margin: 20px 0;
+          border: 1px solid #f0f3f5;
+        }
+
+        .confirm-dosage-section-actions {
+          width: 100%;
+          margin: 20px 0 20px 0;
+          display: flex;
+          justify-content: space-between;
+
+          .confirm-dosage-section-actions-edit {
+            background: black;
+            color: white;
+          }
+
+          .confirm-dosage-section-actions-save {
+            background: #40ab48;
+            color: white;
+            align-self: flex-end;
+          }
+        }
+      }
+    }
+  }
+
+  .schedule-cards-section {
+    width: 40%;
+    justify-content: center;
+
+    .schedule-cards {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .schedule-cards-title {
+        font-size: 25px;
+        margin: 100px 0 0 0;
+        font-weight: 500;
+      }
+
+      .schedule-card {
+        display: flex;
+        width: 400px;
+        height: 75px;
+        margin: 15px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 5px #f3f3f3;
+
+        .schedule-card-icon {
+          line-height: 75px;
+          font-size: 25px;
+          color: #2d90f5;
+          padding: 0 20px;
+        }
+
+        .schedule-card-data {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          margin-top: 15px;
+
+          .schedule-card-title {
+            align-self: flex-start;
+            font-weight: 500;
+            margin: 0 0 7.5px 0;
+          }
+
+          .schedule-card-med-list {
+            display: flex;
+            flex-wrap: wrap;
+            width: 220px;
+            overflow: hidden;
+            height: 25px;
+            line-height: 12.5px;
+
+            .schedule-card-med-list-item {
+              overflow: hidden;
+              font-size: 10px;
+              color: #828384;
+            }
+          }
+        }
+
+        .schedule-card-schedule {
+          color: #2d90f5;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 100px;
+
+          .schedule-card-schedule-pills {
+            align-self: flex-end;
+            margin: 0 0 5px 0;
+          }
+
+          .schedule-card-schedule-passed {
+            background: #40ab48;
+            font-size: 10px;
+            width: max-content;
+            color: #ffffff;
+            align-self: flex-end;
+            padding: 5px;
+            border-radius: 5px;
+          }
+
+          .schedule-card-schedule-soon {
+            background: #ed3f65;
+            font-size: 10px;
+            width: max-content;
+            color: #ffffff;
+            align-self: flex-end;
+            padding: 5px;
+            border-radius: 5px;
+          }
+
+          .schedule-card-schedule-coming-up {
+            background: #F5A623;
+            font-size: 10px;
+            width: max-content;
+            color: #ffffff;
+            align-self: flex-end;
+            padding: 5px;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+}

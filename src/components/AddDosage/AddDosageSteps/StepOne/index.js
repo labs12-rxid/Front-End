@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-// import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
@@ -69,14 +68,11 @@ const StepOne = ({
     }
   };
   return (
-    <div style={{ margin: '0 0 25px 50px' }}>
-      <Typography
-        style={{ fontSize: '25px', margin: '30px 0', fontWeight: '900' }}
-        component='p'
-      >
+    <div className='add-dosage'>
+      <Typography className='add-dosage-title' component='p'>
         Add Dosage
       </Typography>
-      <Card style={{ width: '60%' }}>
+      <Card className='add-dosage-card'>
         <PillCard med={med} medImage={medImage} />
         <CapsulesPerDose
           updateCapsulesPerDose={updateCapsulesPerDose}
@@ -116,34 +112,9 @@ const StepOne = ({
           setDosageDuration={setDosageDuration}
         />
         {/* <CardContent>Text Reminder</CardContent> */}
-        <CardActions
-          style={{
-            width: '40%',
-            justifyContent: 'space-between',
-            margin: '0 auto'
-          }}
-        >
-          <Button
-            style={{
-              background: 'black',
-              color: 'white',
-              boxShadow: '0px 0px 10px 5px #f3f3f3',
-              margin: '0 10px 10px 10px',
-              textTransform: 'none'
-            }}
-          >
-            Cancel
-          </Button>
-          <Button
-            style={{
-              background: '#40AB48',
-              color: 'white',
-              boxShadow: '0px 0px 10px 5px #f3f3f3',
-              margin: '0 10px 10px 10px',
-              textTransform: 'none'
-            }}
-            onClick={handleConfirmDosage}
-          >
+        <CardActions className='add-dosage-card-actions'>
+          <Button className='add-dosage-cancel-btn'>Cancel</Button>
+          <Button className='add-dosage-confirm-btn' onClick={handleConfirmDosage}>
             Confirm Dosage
           </Button>
         </CardActions>

@@ -13,42 +13,36 @@ const LengthOfDosage = ({ lengthOfDosage, updateLengthOfDosage }) => {
   };
 
   return (
-    <CardContent style={{ display: 'flex' }}>
-      <Typography style={{ width: '150px', alignSelf: 'center' }} component='p'>
+    <CardContent className='length-of-dosage'>
+      <Typography className='length-of-dosage-section-title' component='p'>
         Length of Dosage
       </Typography>
       <Button
-        style={{
-          background: lengthOfDosage === 1 ? '#2D90F5' : '',
-          color: lengthOfDosage === 1 ? 'white' : '',
-          boxShadow: '0px 0px 10px 5px #f3f3f3',
-          margin: '0 10px',
-          textTransform: 'none'
-        }}
+        className={
+          lengthOfDosage === 1
+            ? 'length-of-dosage-active'
+            : 'length-of-dosage-inactive'
+        }
         onClick={() => handleLengthOfDosageChange(1)}
       >
         1x - Once
       </Button>
       <Button
-        style={{
-          background: lengthOfDosage === 2 ? '#2D90F5' : '',
-          color: lengthOfDosage === 2 ? 'white' : '',
-          boxShadow: '0px 0px 10px 5px #f3f3f3',
-          margin: '0 10px',
-          textTransform: 'none'
-        }}
+        className={
+          lengthOfDosage === 2
+            ? 'length-of-dosage-active'
+            : 'length-of-dosage-inactive'
+        }
         onClick={() => handleLengthOfDosageChange(2)}
       >
         2x - Twice
       </Button>
       <Button
-        style={{
-          background: lengthOfDosage === 3 ? '#2D90F5' : '',
-          color: lengthOfDosage === 3 ? 'white' : '',
-          boxShadow: '0px 0px 10px 5px #f3f3f3',
-          margin: '0 10px',
-          textTransform: 'none'
-        }}
+        className={
+          lengthOfDosage === 3
+            ? 'length-of-dosage-active'
+            : 'length-of-dosage-inactive'
+        }
         onClick={() => handleLengthOfDosageChange(3)}
       >
         3x - Thrice
