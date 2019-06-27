@@ -8,21 +8,12 @@ import Button from '@material-ui/core/Button';
 
 const DosageDuration = ({ dosageDuration, setDosageDuration }) => {
   return (
-    <CardContent style={{ display: 'flex' }}>
-      <Typography style={{ width: '150px', alignSelf: 'center' }} component='p'>
+    <CardContent className='dosage-duration'>
+      <Typography className='dosage-duration-section-title' component='p'>
         Dosage Duration
       </Typography>
-      <Card
-        style={{
-          display: 'flex',
-          height: '40px',
-          paddingLeft: '20px',
-          boxShadow: '0px 0px 10px 5px #f3f3f3',
-          margin: '0 10px',
-          textTransform: 'none'
-        }}
-      >
-        <Typography style={{ lineHeight: '40px' }} component='p'>
+      <Card className='dosage-duration-interface'>
+        <Typography className='dosage-duration-interface-title' component='p'>
           Number of weeks
         </Typography>
 
@@ -33,15 +24,15 @@ const DosageDuration = ({ dosageDuration, setDosageDuration }) => {
               : null
           }
         >
-          <RemoveIcon style={{ color: '#2D90F5' }} />
+          <RemoveIcon className='dosage-duration-btn' />
         </Button>
 
-        <Typography style={{ lineHeight: '40px' }} component='p'>
+        <Typography className='dosage-duration-display' component='p'>
           {dosageDuration}
         </Typography>
 
         <Button onClick={() => setDosageDuration(dosageDuration + 1)}>
-          <AddIcon style={{ color: '#2D90F5' }} />
+          <AddIcon className='dosage-duration-btn' />
         </Button>
       </Card>
     </CardContent>

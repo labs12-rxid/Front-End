@@ -61,18 +61,14 @@ const DosageTime = ({
     return int + 'th';
   };
   return (
-    <CardContent style={{ display: 'flex' }}>
-      <Typography style={{ width: '150px', alignSelf: 'center' }} component='p'>
+    <CardContent className='dosage-time'>
+      <Typography className='dosage-time-section-title' component='p'>
         Dosage Time(s) <br /> of day
       </Typography>
 
       <Button
+        className='dosage-time-open-dialogue'
         onClick={handleOpenDialogue}
-        style={{
-          boxShadow: '0px 0px 10px 5px #f3f3f3',
-          margin: '0 10px',
-          textTransform: 'none'
-        }}
       >
         Open to Select Dosage Time of Day
       </Button>
@@ -86,11 +82,7 @@ const DosageTime = ({
           {reminderData.length
             ? reminderData.map(data => (
                 <div
-                  style={{
-                    dispay: 'flex',
-                    justifyContent: 'center',
-                    lineHeight: '40px'
-                  }}
+                  className='dosage-time-dialogue-content'
                   key={reminderData.indexOf(data)}
                 >
                   {reminderData.length > 1 ? (
@@ -109,7 +101,7 @@ const DosageTime = ({
                   ) : null}{' '}
                   at
                   <TextField
-                    style={{ paddingLeft: '20px' }}
+                    className='dosage-time-dialogue-content-text-field'
                     id='time'
                     type='time'
                     defaultValue={reminderData[reminderData.indexOf(data)].time}

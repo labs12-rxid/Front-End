@@ -5,20 +5,18 @@ import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import PillCard from '../PillCard';
-import ScheduleCards from './SheduleCards.js';
+import ScheduleCards from './ScheduleCards.js';
 
 const DataDisplay = ({ title, data }) => (
-  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+  <div className='confirm-dosage-data-display'>
     <Typography component='p'>{title}</Typography>
-    <Typography style={{ color: '#2D90F5' }} component='p'>
+    <Typography className='confirm-dosage-data-display-data' component='p'>
       {data}
     </Typography>
   </div>
 );
 
-const StyledHr = () => (
-  <hr style={{ margin: '20px 0', border: '1px solid #F0F3F5' }} />
-);
+const StyledHr = () => <hr className='confirm-dosage-hr' />;
 
 const StepTwo = ({
   med,
@@ -34,50 +32,15 @@ const StepTwo = ({
   handleAddPill
 }) => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-evenly',
-        width: '100%',
-        margin: '0 0 75px 0'
-      }}
-    >
-      <section
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: '60%',
-          // justifyContent: 'center',
-          alignItems: 'center'
-        }}
-      >
-        <Typography
-          style={{
-            alignSelf: 'flex-start',
-            padding: '0 0 0 10%',
-            fontSize: '25px',
-            margin: '30px 0',
-            fontWeight: '900'
-          }}
-          component='p'
-        >
+    <div className='confirm-dosage'>
+      <section className='confirm-dosage-section'>
+        <Typography className='confirm-dosage-section-title' component='p'>
           Confirm Dosage Schedule
         </Typography>
-        <Card style={{ width: '80%' }}>
+        <Card className='confirm-dosage-section-container'>
           <PillCard med={med} medImage={medImage} />
-          <Card style={{ width: '65%', margin: '0 auto', boxShadow: 'none' }}>
-            <Typography
-              style={{
-                height: '50px',
-                lineHeight: '50px',
-                width: '100%',
-                background: '#2D90F5',
-                color: 'white',
-                borderRadius: '4px',
-                textAlign: 'center',
-                fontSize: '20px'
-              }}
-            >
+          <Card className='confirm-dosage-section-container-card'>
+            <Typography className='confirm-dosage-section-container-card-title'>
               SCHEDULE
             </Typography>
             <CardContent>
@@ -114,26 +77,15 @@ const StepTwo = ({
               <StyledHr />
               <DataDisplay title='Start Date' data={startDate} />
             </CardContent>
-            <CardActions
-              style={{
-                width: '100%',
-                margin: '20px 0 20px 0',
-                display: 'flex',
-                justifyContent: 'space-between'
-              }}
-            >
+            <CardActions className='confirm-dosage-section-actions'>
               <Button
-                style={{ background: 'black', color: 'white' }}
+                className='confirm-dosage-section-actions-edit'
                 onClick={() => setStep(0)}
               >
                 Edit Schedule
               </Button>
               <Button
-                style={{
-                  background: '#40AB48',
-                  color: 'white',
-                  alignSelf: 'flex-end'
-                }}
+                className='confirm-dosage-section-actions-save'
                 onClick={() => handleAddPill()}
               >
                 Save Dosage
@@ -142,7 +94,7 @@ const StepTwo = ({
           </Card>
         </Card>
       </section>
-      <section style={{ width: '40%', justifyContent: 'center' }}>
+      <section className='schedule-cards-section'>
         <ScheduleCards />
       </section>
     </div>
