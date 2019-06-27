@@ -157,6 +157,11 @@ $lightgray: #d6d8dd;
           position: relative;
           bottom: 28px;
           text-transform: capitalize;
+
+          @media (max-width: 500px) {
+            left: -50vw;
+            height: 60px;
+          }
         }
       }
       @media (max-width: 1000px) {

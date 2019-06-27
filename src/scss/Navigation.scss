@@ -18,6 +18,7 @@ $pillborder: #ebecee;
 
   @media (max-width: 500px) {
     margin: 6px auto;
+    overflow-x: hidden;
   }
 
   .tab {
