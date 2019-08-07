@@ -87,9 +87,16 @@ const styles = {
     flexBasis: '33.33%',
     flexShrink: 0
   },
+  headingContainer: {
+    flexBasis: '30%',
+    flexShrink: 0,
+    marginLeft: 'auto'
+  },
   secondaryHeading: {
+    display: 'flex',
     fontSize: 18,
-    color: 'secondary'
+    color: 'secondary',
+    justifyContent: 'flex-end'
   },
   chip: {
     [`${mobile}`]: {
@@ -138,18 +145,22 @@ function DiaryMedPanel({ classes, med, changeFocus, diaryFocus, diaryCount }) {
           <Typography className={classNames(classes.heading)}>
             {med.med_name}
           </Typography>
-          <Chip
-            className={classNames(
-              classes.chip,
-              expanded === med.id ? classes.green : classes.grey
-            )}
-            label={`${diaryCount} Diary ${
-              diaryCount === 1 ? 'Entry' : 'Entries'
-            }`}
-          />
-          <Typography className={classNames(classes.secondaryHeading)}>
-            {expanded === med.id ? 'Close Entries' : 'View/Add Entries'}
-          </Typography>
+          <div className={classNames(classes.headingContainer)}>
+            <Chip
+              className={classNames(
+                classes.chip,
+                expanded === med.id ? classes.green : classes.grey
+              )}
+              label={`${diaryCount} Diary ${
+                diaryCount === 1 ? 'Entry' : 'Entries'
+              }`}
+            />
+          </div>
+          <div className={classNames(classes.headingContainer)}>
+            <Typography className={classNames(classes.secondaryHeading)}>
+              {expanded === med.id ? 'Close Entries' : 'View/Add Entries'}
+            </Typography>
+          </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <DiaryEntriesPanels
