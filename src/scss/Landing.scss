@@ -11,12 +11,22 @@ $mobile: 500px;
     height: 579px;
     background: radial-gradient(farthest-side at 50% 0%, #2d90f5, #252c35 90%);
 
+    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+    }
+
     .product-data {
       margin: 150px 50px 50px 100px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       width: 50%;
+
+      @media screen and (max-width: $mobile) {
+        margin: 30% auto 10%;
+        text-align: center;
+        width: 100%;
+      }
 
       h1 {
         font-size: 60px;
@@ -28,6 +38,10 @@ $mobile: 500px;
         width: 300px;
         margin: 50px 0 50px -100px;
         border: 2px solid #40ab48;
+        @media screen and (max-width: $mobile) {
+          margin: 10px 0 10px 0;
+          // display: none;
+        }
       }
 
       .product-description {
@@ -39,37 +53,6 @@ $mobile: 500px;
           display: none;
         }
       }
-      .mobile-buttons {
-        display: none;
-        @media screen and (max-width: $mobile) {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          margin: 1.5rem 1rem 0.5rem 0.5rem;
-          line-height: 100%;
-        }
-        .login {
-          color: #e8ebef;
-          width: 180px;
-          height: 60px;
-          font-size: 20px;
-          background: none;
-          border: 1px solid #979797;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-
-        .join {
-          font-size: 20px;
-          color: #e8ebef;
-          width: 180px;
-          height: 60px;
-          background: #2d90f5;
-          border: 1px solid #2d90f5;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-      }
     }
     .buttons {
       width: 50%;
@@ -79,7 +62,12 @@ $mobile: 500px;
       margin: 150px 100px 50px 50px;
       line-height: 100%;
       @media screen and (max-width: $mobile) {
-        display: none;
+        height: 25%;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        margin: 1.5rem 1rem 0.5rem 0.5rem;
+        line-height: 100%;
       }
 
       .login {
@@ -108,6 +96,10 @@ $mobile: 500px;
 
   .core-features {
     display: flex;
+    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+      // display: none;
+    }
 
     .text-content {
       display: flex;
@@ -115,7 +107,13 @@ $mobile: 500px;
       width: 50%;
       padding: 300px 0 100px 100px;
       @media screen and (max-width: $mobile) {
-        display: none;
+        width: max-content;
+        padding: 0;
+        margin: 20px auto;
+
+        text-align: center;
+
+        // display: none;
       }
 
       h1 {
@@ -129,14 +127,22 @@ $mobile: 500px;
         font-size: 20px;
         font-weight: 300;
         color: #74869b;
+
+        @media screen and (max-width: $mobile) {
+          display: none;
+        }
       }
     }
 
     .tiles {
       display: flex;
       width: 50%;
+      margin-left: -35px;
       padding: 100px 50px 100px 0px;
       @media screen and (max-width: $mobile) {
+        margin: 0 auto;
+        padding: 0;
+        width: 100%;
         flex-direction: column;
       }
       :first-child {
@@ -149,6 +155,10 @@ $mobile: 500px;
       .tiles-column {
         display: flex;
         flex-direction: column;
+
+        @media screen and (max-width: $mobile) {
+          margin: 0 auto;
+        }
 
         .scan-tile {
           display: flex;
@@ -184,7 +194,12 @@ $mobile: 500px;
           align-items: center;
           border-radius: 7.5px;
           margin: 10px;
+          // margin-left: -5%;
           box-shadow: 0px 0px 10px 10px #f3f3f3;
+
+          @media screen and (max-width: $mobile) {
+            margin: 20px auto;
+          }
 
           .icon {
             height: 78px;
@@ -201,7 +216,11 @@ $mobile: 500px;
         }
 
         .medication-tile {
-          margin-left: 50%;
+          margin-left: 10%;
+
+          @media screen and (max-width: $mobile) {
+            margin: 10px;
+          }
         }
       }
     }
@@ -220,6 +239,10 @@ $mobile: 500px;
       flex-direction: column;
       align-items: center;
 
+      @media screen and (max-width: $mobile) {
+        margin: 50px auto -40px;
+      }
+
       h1 {
         font-size: 36px;
         font-weight: 300;
@@ -230,6 +253,10 @@ $mobile: 500px;
         font-size: 20px;
         font-weight: 300;
         color: #74869b;
+
+        @media screen and (max-width: $mobile) {
+          display: none;
+        }
       }
     }
 
@@ -240,6 +267,7 @@ $mobile: 500px;
       padding-top: 50px;
       width: 90%;
       @media screen and (max-width: $mobile) {
+        width: 100%;
         flex-direction: column;
       }
 
@@ -251,6 +279,9 @@ $mobile: 500px;
         height: 426px;
         box-shadow: 0px 0px 10px 10px #f0f0f0;
         border-radius: 5px;
+        @media screen and (max-width: $mobile) {
+          margin: 10px auto;
+        }
 
         .logo {
           display: flex;
