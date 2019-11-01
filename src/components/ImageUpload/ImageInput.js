@@ -4,12 +4,11 @@ import Button from '@material-ui/core/Button';
 
 const ImageInput = ({ photoSelect, buttonText, subText, ...props }) => {
   // Extremely breakable component, please be careful.
+  const imageRef = React.createRef();
 
-  const magicClicker = event => {
-    if (event.which === 32 || event.which === 13) {
-      event.preventDefault();
-      document.querySelector(`#image-upload-input`).click();
-    }
+  const magicClicker = e => {
+    e.preventDefault();
+    imageRef.current.click();
   }; // Makes accessible "clicking" possible.
 
   return (
@@ -20,6 +19,7 @@ const ImageInput = ({ photoSelect, buttonText, subText, ...props }) => {
           accept='image/*'
           style={{ display: 'none' }}
           id='image-upload-input'
+          ref={imageRef}
           onChange={photoSelect}
           type='file'
         />
@@ -29,6 +29,7 @@ const ImageInput = ({ photoSelect, buttonText, subText, ...props }) => {
           component='span'
           /* ...think again. */
           className='upload-button'
+          onClick={magicClicker}
           onKeyDown={magicClicker}
         >
           Upload {buttonText}
