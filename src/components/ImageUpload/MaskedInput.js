@@ -11,13 +11,11 @@ const UploadButton = withStyles({
 })(props => <MuiButton {...props} />);
 
 const ImageInput = ({ photoSelect, buttonText, maskImage, ...props }) => {
-  // Extremely breakable component, please be careful.
+  const imageRef = React.createRef();
 
   const magicClicker = event => {
-    if (event.which === 32 || event.which === 13) {
-      event.preventDefault();
-      document.querySelector(`#image-upload-input`).click();
-    }
+    event.preventDefault();
+    imageRef.current.click();
   }; // Makes accessible "clicking" possible.
 
   return (
@@ -42,6 +40,7 @@ const ImageInput = ({ photoSelect, buttonText, maskImage, ...props }) => {
             style={{ display: 'none' }}
             id='image-upload-input'
             onChange={photoSelect}
+            ref={imageRef}
             type='file'
           />
           <UploadButton
@@ -50,7 +49,7 @@ const ImageInput = ({ photoSelect, buttonText, maskImage, ...props }) => {
             component='span'
             /* ...think again. */
             className='upload-button'
-            onKeyDown={magicClicker}
+            onClick={magicClicker}
           >
             Select Image for Upload!
           </UploadButton>
