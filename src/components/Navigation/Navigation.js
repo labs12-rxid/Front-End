@@ -1,58 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import MuiToolbar from '@material-ui/core/Toolbar';
+import Toolbar from '@material-ui/core/Toolbar';
 import Tabs from './Tabs';
-import MuiIconButton from '@material-ui/core/IconButton';
-import MuiTypography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography';
 import { fade } from '@material-ui/core/styles/colorManipulator';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import ProfileIcon from '../ProfileIcon/ProfileIcon';
 
-import { logout } from 'actions/index';
 import { mobile, tablet } from 'scss/mediaVariables';
 
-const Typography = withStyles({
-  root: {
-    [mobile]: {
-      fontSize: '12px'
-    }
-  }
-})(props => <MuiTypography {...props} />);
-
-Typography.muiName = 'Typography';
-
-const Toolbar = withStyles({
-  root: {
-    height: '110px',
-    justifyContent: 'space-between'
-  },
-  regular: {
-    minHeight: '70px',
-    [tablet]: {
-      minHeight: '70px',
-      height: '70px'
-    }
-  },
-  gutters: {
-    padding: '0 15px 0 15px'
-  }
-})(props => <MuiToolbar {...props} />);
-
-Toolbar.muiName = 'Toolbar';
-
-const IconButton = withStyles({
-  root: {
-    '&:hover': {
-      backgroundColor: 'transparent'
-    }
-  }
-})(props => <MuiIconButton {...props} />);
-
-IconButton.muiName = 'IconButton';
-
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     borderBottom: '1px solid #3b3b3c'
@@ -66,7 +24,19 @@ const styles = theme => ({
   title: {
     margin: '3px 10px 0 0',
     fontSize: '1.2rem',
-    fontWeight: 'light'
+    fontWeight: 'light',
+    [mobile]: {
+      fontSize: '12px'
+    }
+  },
+  toolbar: {
+    height: '110px',
+    justifyContent: 'space-between',
+    padding: '0 15px',
+    [tablet]: {
+      minHeight: '70px',
+      height: '70px'
+    }
   },
   subTitle: {
     fontWeight: 300,
@@ -89,9 +59,9 @@ const styles = theme => ({
     width: '100%'
   },
   inputInput: {
-    paddingTop: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
+    paddingTop: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
     paddingLeft: '40px',
     transition: theme.transitions.create('width'),
     width: '100%'
@@ -111,78 +81,46 @@ const styles = theme => ({
     background: '#F0F3F5',
     height: '15px'
   }
-});
+}));
 
-class Navigation extends Component {
-  state = {
-    anchorEl: null,
-    mobileMoreAnchorEl: null
-  };
+const Navigation = ({ location }) => {
+  const classes = useStyles();
 
-  handleProfileMenuOpen = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleMenuClose = () => {
-    this.setState({ anchorEl: null });
-    this.handleMobileMenuClose();
-  };
-
-  handleMobileMenuOpen = event => {
-    this.setState({ mobileMoreAnchorEl: event.currentTarget });
-  };
-
-  handleMobileMenuClose = () => {
-    this.setState({ mobileMoreAnchorEl: null });
-  };
-
-  render() {
-    const { classes } = this.props;
-
-    if (
-      this.props.location.pathname === '/' ||
-      this.props.location.pathname === '/landing'
-    ) {
-      return null;
-    } else {
-      return (
-        <div>
-          <div className={classes.root}>
-            <AppBar position='static' className={classes.bar}>
-              <Toolbar>
-                <div className={classes.titleDiv}>
-                  <Typography
-                    className={classes.title}
-                    variant='h2'
-                    color='inherit'
-                    noWrap
-                  >
-                    <strong className={classes.strong}>RxID</strong>
-                    <span className={classes.subTitle}> Pill Identifier</span>
-                  </Typography>
-                </div>
-                <div className={classes.sectionDesktop}>
-                  <ProfileIcon />
-                </div>
-              </Toolbar>
-            </AppBar>
-          </div>
-          {this.props.location.pathname !== '/identify' ? (
-            <Tabs classes='tab-navigator' />
-          ) : null}
-          {this.props.location.pathname === '/identify' ||
-          this.props.location.pathname === '/identify/results' ? null : (
-            <div className={classes.greyStripe} />
-          )}
+  if (location.pathname === '/' || location.pathname === 'landing') {
+    return null;
+  } else {
+    return (
+      <div>
+        <div className={classes.root}>
+          <AppBar position='static' className={classes.bar}>
+            <Toolbar className={classes.toolbar}>
+              <div className={classes.titleDiv}>
+                <Typography
+                  className={classes.title}
+                  variant='h2'
+                  color='inherit'
+                  noWrap
+                >
+                  <strong className={classes.strong}>RxID</strong>
+                  <span className={classes.subTitle}> Pill Identifier</span>
+                </Typography>
+              </div>
+              <div className={classes.sectionDesktop}>
+                <ProfileIcon />
+              </div>
+            </Toolbar>
+          </AppBar>
         </div>
-      );
-    }
+        {location.pathname !== '/identify' ? (
+          <Tabs classes='tab-navigator' />
+        ) : null}
+        {location.pathname === 'identify' ||
+        location.pathname === '/identify/results' ? null : (
+          <div className={classes.greyStripe} />
+        )}
+      </div>
+    );
   }
-}
+};
 
-const StyledNavigation = withStyles(styles)(withRouter(Navigation));
-
-export default connect(
-  null,
-  { logout }
-)(StyledNavigation);
+export default withRouter(Navigation);
