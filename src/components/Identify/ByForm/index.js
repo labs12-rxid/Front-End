@@ -4,12 +4,14 @@ import { withRouter } from 'react-router';
 import SpinWhile from 'components/Spinner/SpinWhile';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { valid_shapes as shapes } from 'data/rxdata.json';
-import { valid_colors as colors } from 'data/rxdata.json';
+import rxdata from 'data/rxdata.json';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Dropdown from './Dropdown';
 import parseMedStrengths from 'utilities/parseMedStrengths';
+
+const colors = rxdata.valid_colors;
+const shapes = rxdata.valid_shapes;
 
 // import AddPillButton from '../Scan/SearchResults/AddPillButton';
 
@@ -185,7 +187,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  null
-)(withRouter(SearchPill));
+export default connect(mapStateToProps, null)(withRouter(SearchPill));

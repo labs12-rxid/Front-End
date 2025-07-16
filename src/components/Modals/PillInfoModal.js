@@ -11,8 +11,9 @@ import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-import { valid_shapes as shapes } from 'data/rxdata.json';
-import { valid_colors as colors } from 'data/rxdata.json';
+import rxdata from 'data/rxdata.json';
+const colors = rxdata.valid_colors;
+const shapes = rxdata.valid_shapes;
 
 const Swatch = ({ color }) => {
   const swatchObject = {
@@ -47,13 +48,8 @@ class PillInfoModal extends Component {
   };
   render() {
     const { open, handleClose, addPill, classes } = this.props;
-    const {
-      med_name,
-      med_color,
-      med_shape,
-      med_strength,
-      med_strength_unit
-    } = this.state.pill;
+    const { med_name, med_color, med_shape, med_strength, med_strength_unit } =
+      this.state.pill;
     return (
       <Dialog
         aria-labelledby='add-pill'
@@ -207,7 +203,4 @@ const styles = theme => ({
 
 const StyledModal = withStyles(styles)(PillInfoModal);
 
-export default connect(
-  null,
-  { addMed }
-)(StyledModal);
+export default connect(null, { addMed })(StyledModal);
